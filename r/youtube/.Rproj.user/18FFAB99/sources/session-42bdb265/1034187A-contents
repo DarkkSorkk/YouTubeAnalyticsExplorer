@@ -1,0 +1,103 @@
+# Carregar o arquivo CSV no ambiente global
+meu_dataframe <- read.csv("Global YouTube Statistics.csv")
+
+# Visualizar as primeiras linhas do dataframe
+head(meu_dataframe)
+
+# Filtrar as observações onde a coluna 'Abbreviation' é igual a 'BR'
+novo_dataframe <- subset(meu_dataframe, Abbreviation == "BR")
+
+# Visualizar as primeiras linhas do novo dataframe
+head(novo_dataframe)
+
+# Contar a frequência de cada valor único na coluna 'category'
+> frequencia_category <- table(meu_dataframe$category)
+> 
+  > # Converter a tabela em um dataframe
+  > frequencia_category_df <- as.data.frame(frequencia_category)
+> 
+  > # Renomear as colunas do dataframe
+  > colnames(frequencia_category_df) <- c("Category", "Frequency")
+> 
+  > # Visualizar o dataframe
+  > head(frequencia_category_df)
+
+# Obter o número total de observações na coluna 'category'
+total_observacoes <- nrow(meu_dataframe)
+
+# Calcular a porcentagem de frequência para cada valor único
+porcentagem_category <- (frequencia_category / total_observacoes) * 100
+
+# Converter a tabela em um dataframe
+porcentagem_category_df <- as.data.frame(porcentagem_category)
+
+# Renomear as colunas do dataframe
+colnames(porcentagem_category_df) <- c("Category", "Percentage")
+
+# Visualizar o dataframe
+head(porcentagem_category_df)
+
+
+# Contar a frequência de cada país na coluna 'Country'
+frequencia_paises <- table(dados_completos$Country)
+
+# Ordenar em ordem decrescente
+frequencia_paises_ordenada <- sort(frequencia_paises, decreasing = TRUE)
+
+# Converter a tabela ordenada em um dataframe
+paises_mais_frequentes <- as.data.frame(frequencia_paises_ordenada)
+
+# Renomear as colunas do dataframe
+colnames(paises_mais_frequentes) <- c("Country", "Frequency")
+
+# Visualizar o dataframe
+head(paises_mais_frequentes)
+
+# Contar a frequência de cada valor único na coluna 'channel_type'
+frequencia_channel_type <- table(dados_completos$channel_type)
+
+# Obter o número total de observações na coluna 'channel_type'
+total_observacoes_channel_type <- nrow(dados_completos)
+
+# Calcular a porcentagem de frequência para cada valor único
+porcentagem_channel_type <- (frequencia_channel_type / total_observacoes_channel_type) * 100
+
+# Converter a tabela de frequência em um dataframe
+channel_type_frequencia <- as.data.frame(frequencia_channel_type)
+
+# Converter a tabela de porcentagem em um dataframe
+channel_type_porcentagem_frequencia <- as.data.frame(porcentagem_channel_type)
+
+# Renomear as colunas dos dataframes
+colnames(channel_type_frequencia) <- c("Channel_Type", "Frequency")
+colnames(channel_type_porcentagem_frequencia) <- c("Channel_Type", "Percentage")
+
+# Visualizar os dataframes
+head(channel_type_frequencia)
+head(channel_type_porcentagem_frequencia)
+
+# Verificar valores faltantes
+sum(is.na(dados_completos$channel_type))
+sum(is.na(dados_completos$Unemployment.rate))
+
+# Resumo estatístico para identificar outliers
+summary(dados_completos$Unemployment.rate)
+
+
+library(dplyr)
+
+dados_agrupados <- dados_completos %>%
+  group_by(channel_type) %>%
+  summarise(Avg_Unemployment = mean(Unemployment.rate, na.rm = TRUE))
+
+# Visualizar os dados agrupados
+dados_agrupados
+
+library(ggplot2)
+
+ggplot(dados_agrupados, aes(x = channel_type, y = Avg_Unemployment)) +
+  geom_bar(stat = "identity") +
+  xlab("Tipo de Canal") +
+  ylab("Taxa de Desemprego Média") +
+  ggtitle("Taxa de Desemprego Média por Tipo de Canal")
+

@@ -1,0 +1,39 @@
+Relatório de Insights sobre o Dataset "Global YouTube Statistics"
+Estrutura dos Dados
+O dataset parece conter várias métricas relacionadas a canais do YouTube, como "rank", "subscribers", "video.views", "uploads", entre outras. Além disso, ele inclui informações sobre o país e outros indicadores socioeconômicos como "Unemployment.rate", "Population", e "Urban_population".
+
+Relações entre Variáveis
+A matriz de correlação indica várias relações interessantes e pontos que merecem atenção:
+
+Inscritos vs. Visualizações de Vídeo: A correlação entre "subscribers" e "video.views" é alta (aprox. 0.85), o que é esperado. Canais com mais inscritos tendem a ter mais visualizações.
+
+Renda Mensal/Anual e Visualizações no Último Mês: As métricas financeiras, como "lowest_monthly_earnings" e "highest_monthly_earnings", estão fortemente correlacionadas com as "video_views_for_the_last_30_days" (aprox. 0.64).
+
+Taxa de Desemprego e Educação: Há uma correlação positiva de aproximadamente 0.71 entre "Gross.tertiary.education.enrollment...." e "Unemployment.rate". Isso é contra-intuitivo e poderia ser explorado mais a fundo.
+
+Longitude e Taxa de Desemprego: A correlação é de aproximadamente -0.80, sugerindo que a taxa de desemprego e a longitude de um país podem ter uma relação inversa. Isso também é contra-intuitivo e merece mais investigação.
+
+População e População Urbana: Como esperado, há uma correlação muito alta de aproximadamente 0.92 entre "Population" e "Urban_population".
+
+Insights Estratégicos
+Canais Populares e Mercados: Identificar países e tipos de canais que estão performando bem pode oferecer insights para estratégias de marketing e expansão de negócios.
+
+Monetização: As métricas de ganhos (mensais e anuais) podem ajudar os canais a entender melhor o potencial de receita e a ajustar suas estratégias de conteúdo.
+
+Análise de Tempo: A variável "created_year" pode ser útil para analisar tendências ao longo do tempo e entender como a popularidade e a monetização evoluíram.
+
+Recomendações para Futuras Análises
+Explorar Fatores Socioeconômicos: É interessante investigar mais sobre como fatores como taxa de desemprego e educação podem influenciar a popularidade ou o tipo de conteúdo produzido.
+
+Análise Segmentada: Segmentar dados por país ou tipo de canal pode revelar insights mais específicos.
+
+Modelos Preditivos: Com base nessas variáveis, modelos preditivos podem ser construídos para prever métricas futuras para canais do YouTube.
+
+Verificar Dados Estranhos: A correlação contra-intuitiva entre taxa de desemprego e educação, e entre taxa de desemprego e longitude, sugere que uma revisão dos dados pode ser necessária.
+
+Espero que esses insights sejam úteis. Se você tiver alguma pergunta ou quiser explorar alguma área específica, fique à vontade para perguntar.
+
+
+
+
+
